@@ -1,0 +1,7 @@
+debug: true
+proxy: "http://127.0.0.1:7890"
+token: "6524718932:AAG1E6zRmA43pTcXcajBJcQhRUlwK48vF14"
+db:
+  user: "root"
+  pwd: "123456aA"
+  name: "tbot"
