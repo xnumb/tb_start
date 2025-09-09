@@ -3,15 +3,15 @@ package mod
 import (
 	"errors"
 	"fmt"
-	"github.com/xnumb/tele"
+	"github.com/xnumb/tb/log"
+	"github.com/xnumb/tb/utils"
+	tele "gopkg.in/telebot.v4"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
 	"main/app"
 	"strings"
-	"tb2/log"
-	"tb2/utils"
 	"time"
 )
 
@@ -23,7 +23,7 @@ var (
 	ErrNoUserInstance      = errors.New("不存在User实例")
 )
 
-func init() {
+func Init() {
 	dbConf := app.Conf.DB
 	s := fmt.Sprintf("%s:%s@/%s?charset=utf8mb4&parseTime=True&loc=Asia%sShanghai", dbConf.User, dbConf.Pwd, dbConf.Name, "%2F")
 	d, err := gorm.Open(mysql.Open(s), &gorm.Config{
@@ -59,6 +59,7 @@ func SQL(res any, sql string, params ...any) {
 }
 
 func Reset() {
+	Init()
 	err := db.AutoMigrate(
 		autoMigrateDst...,
 	)

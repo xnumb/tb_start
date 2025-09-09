@@ -1,11 +1,11 @@
-package client
+package serv
 
 import (
-	"github.com/xnumb/tele"
+	"github.com/xnumb/tb"
+	"github.com/xnumb/tb/emj"
+	"github.com/xnumb/tb/to"
+	tele "gopkg.in/telebot.v4"
 	"strings"
-	tb "tb2"
-	"tb2/emj"
-	"tb2/to"
 )
 
 var _btnConf = &tb.Btn{

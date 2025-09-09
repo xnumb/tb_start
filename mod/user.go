@@ -1,7 +1,7 @@
 package mod
 
 import (
-	"github.com/xnumb/tele"
+	tele "gopkg.in/telebot.v4"
 	"strings"
 	"time"
 )

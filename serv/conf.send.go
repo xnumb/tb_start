@@ -1,10 +1,10 @@
-package client
+package serv
 
 import (
-	"github.com/xnumb/tele"
+	"github.com/xnumb/tb"
+	"github.com/xnumb/tb/emj"
+	tele "gopkg.in/telebot.v4"
 	"strings"
-	tb "tb2"
-	"tb2/emj"
 )
 
 func sendConf(c tele.Context, isEdit bool) error {

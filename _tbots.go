@@ -18,10 +18,10 @@ func init() {
 }
 
 func main() {
-	runs()
+	run()
 }
 
-func runs() {
+func run() {
 	mod.Reset()
 	log.Info("Start client bot.")
 	tbots = tb.NewTbots(serv.Gen, func(id uint, u *tele.User) {

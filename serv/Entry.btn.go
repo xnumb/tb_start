@@ -1,6 +1,6 @@
-package client
+package serv
 
-import tb "tb2"
+import "github.com/xnumb/tb"
 
 var btns = tb.Btns{
 	btnConf,

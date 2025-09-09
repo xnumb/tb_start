@@ -1,12 +1,14 @@
-package client
+package serv
 
 import (
-	"github.com/xnumb/tele"
+	"github.com/xnumb/tb"
+	"github.com/xnumb/tb/log"
+	tele "gopkg.in/telebot.v4"
 	"main/app"
 	"main/mod"
-	tb "tb2"
-	"tb2/log"
 )
+
+var Bot *tb.Tbot
 
 func Gen(token string) *tb.Tbot {
 	defer func() {
@@ -54,5 +56,6 @@ func Gen(token string) *tb.Tbot {
 		}
 		return nil
 	})
+	Bot = t
 	return t
 }

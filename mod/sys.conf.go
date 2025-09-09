@@ -1,7 +1,7 @@
 package mod
 
 import (
-	"tb2/log"
+	"github.com/xnumb/tb/log"
 	"time"
 )
 

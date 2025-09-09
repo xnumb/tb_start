@@ -1,9 +1,9 @@
-package client
+package serv
 
 import (
-	"github.com/xnumb/tele"
+	"github.com/xnumb/tb"
+	tele "gopkg.in/telebot.v4"
 	"main/mod"
-	tb "tb2"
 )
 
 var menus = tb.Menus{

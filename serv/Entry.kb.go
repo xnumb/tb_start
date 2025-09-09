@@ -1,9 +1,9 @@
-package client
+package serv
 
 import (
-	"github.com/xnumb/tele"
-	tb "tb2"
-	"tb2/emj"
+	"github.com/xnumb/tb"
+	"github.com/xnumb/tb/emj"
+	tele "gopkg.in/telebot.v4"
 )
 
 var kbs = tb.Kbs{

@@ -1,10 +1,10 @@
-package client
+package serv
 
 import (
-	"github.com/xnumb/tele"
+	"github.com/xnumb/tb/to"
+	tele "gopkg.in/telebot.v4"
 	"main/mod"
 	"strings"
-	"tb2/to"
 )
 
 func checkAuth(c tele.Context) (*mod.Conf, bool) {
