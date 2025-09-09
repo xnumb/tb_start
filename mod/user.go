@@ -1,9 +1,10 @@
 package mod
 
 import (
-	tele "gopkg.in/telebot.v4"
 	"strings"
 	"time"
+
+	tele "gopkg.in/telebot.v4"
 )
 
 type User struct {
@@ -56,5 +57,5 @@ func UpdateUser(u *tele.User) (*User, error) {
 	if err := r.Save(); err != nil {
 		return nil, err
 	}
-	return &r, r.Save()
+	return &r, nil
 }
