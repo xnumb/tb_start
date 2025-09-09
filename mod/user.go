@@ -17,22 +17,22 @@ type User struct {
 }
 
 func (r *User) GetByTid(tid int64) error {
-	return db.First(&r, "tid = ?", tid).Error
+	return db.First(r, "tid = ?", tid).Error
 }
 
 func (r *User) Get(id uint) error {
-	return db.First(&r, id).Error
+	return db.First(r, id).Error
 }
 
 func (r *User) Add() error {
-	return db.Create(&r).Error
+	return db.Create(r).Error
 }
 
 func (r *User) Save() error {
 	if r.ID == 0 {
 		return ErrModSaveNoPrimaryKey
 	}
-	return db.Save(&r).Error
+	return db.Save(r).Error
 }
 
 func UpdateUser(u *tele.User) (*User, error) {
