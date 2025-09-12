@@ -89,15 +89,15 @@ type Ask struct {
 }
 
 func (r Ask) Set(senderId int64, cmd string, messageId int) error {
-	err := db.First(r, "sender_id = ?", senderId).Error
+	err := db.First(&r, "sender_id = ?", senderId).Error
 	r.Cmd = cmd
 	r.MessageId = messageId
 	if err == nil {
-		return db.Save(r).Error
+		return db.Save(&r).Error
 	} else {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			r.SenderId = senderId
-			return db.Create(r).Error
+			return db.Create(&r).Error
 		}
 		return err
 	}
@@ -109,7 +109,7 @@ func (r Ask) Get(senderId int64) string {
 		t := utils.GetNow().Add(-time.Minute * app.AskExpireMin)
 		db.Where("updated_at < ?", t).Delete(&Ask{})
 	}
-	err := db.First(r, "sender_id = ?", senderId).Error
+	err := db.First(&r, "sender_id = ?", senderId).Error
 	if err != nil {
 		return ""
 	}
@@ -117,12 +117,12 @@ func (r Ask) Get(senderId int64) string {
 }
 
 func (r Ask) Done(senderId int64) (int, error) {
-	err := db.First(r, senderId).Error
+	err := db.First(&r, senderId).Error
 	if err != nil {
 		return 0, err
 	} else {
 		msgId := r.MessageId
-		err := db.Delete(r).Error
+		err := db.Delete(&r).Error
 		if err != nil {
 			return 0, err
 		}
