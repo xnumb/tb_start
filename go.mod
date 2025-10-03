@@ -3,7 +3,7 @@ module main
 go 1.24.7
 
 require (
-	github.com/xnumb/tb v1.0.4
+	github.com/xnumb/tb v1.0.5
 	gopkg.in/telebot.v4 v4.0.0-beta.5
 	gorm.io/driver/mysql v1.6.0
 	gorm.io/gorm v1.30.5
