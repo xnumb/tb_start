@@ -12,7 +12,11 @@ func checkAuth(c tele.Context) (*mod.Conf, bool) {
 	if err := conf.Get(); err != nil {
 		return nil, false
 	}
-	if strings.Contains(conf.AdminIds, to.S(c.Sender().ID)) {
+	senderId := to.S(c.Sender().ID)
+	if strings.Contains(conf.AdminIds, senderId) {
+		return &conf, true
+	}
+	if strings.Contains(conf.SuperAdminIds, senderId) {
 		return &conf, true
 	}
 	return &conf, false
