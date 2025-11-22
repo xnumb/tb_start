@@ -1,10 +1,11 @@
 package serv
 
 import (
-	"github.com/xnumb/tb/to"
-	tele "gopkg.in/telebot.v4"
 	"main/mod"
 	"strings"
+
+	"github.com/xnumb/tb/to"
+	tele "gopkg.in/telebot.v4"
 )
 
 func checkAuth(c tele.Context) (*mod.Conf, bool) {
@@ -46,4 +47,32 @@ func checkAuthRole(c tele.Context) (*mod.Conf, int) {
 		return &conf, 1
 	}
 	return &conf, 0
+}
+
+func getAllAdmins() []int64 {
+	conf := mod.Conf{}
+	if err := conf.Get(); err != nil {
+		return nil
+	}
+	admins := strings.Split(conf.AdminIds, ",")
+	superAdmins := strings.Split(conf.SuperAdminIds, ",")
+	allAdmins := append(admins, superAdmins...)
+
+	// 去重
+	seen := make(map[string]struct{})
+	unique := []int64{}
+	for _, v := range allAdmins {
+		if v == "" {
+			continue
+		}
+		if _, ok := seen[v]; !ok {
+			seen[v] = struct{}{}
+			val, ok := to.I64(v)
+			if !ok {
+				continue
+			}
+			unique = append(unique, val)
+		}
+	}
+	return unique
 }
